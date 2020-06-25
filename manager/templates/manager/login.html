@@ -1,21 +1,39 @@
 {% extends 'manager/base.html' %}
-{% block title %} Login{% endblock title %}
+{% block title %}Login{% endblock title %}
+
+<!--  Remove header on login page  -->
+{% block header %}{% endblock header %}
 
 {% block content %}
+    <div class="login-signup">
+        <div class="login-panel">
+            <div class="card text-center bg-light">
+                <div class="card-body">
+                    <h5>PassManager</h5>
+                    <form action="{% url 'manager:login_check' %}" method="post">
+                        {% csrf_token %}
+                        {#  Username/Email Field  #}
+                        <div class="form-group">
+                            <label for="usrEmail">Enter Username or Email</label>
+                            <input type="text" class="form-control" name="usrEmail" id="usrEmail" placeholder="Username or Email"><br>
+                        </div>
+                        {#  Password Field  #}
+                        <div class="form-group">
+                            <label for="pwd">Enter Password</label>
+                            <input type="text" class="form-control" name="pwd" id="pwd" placeholder="Password"><br>
+                            <a href="{% url 'manager:reset_password' %}">Forgot Account?</a><br><br>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Login</button>
+                    </form>
+                </div>
+            </div>
+        </div><!--  END: login-panel  -->
 
-    <div class="login-panel">
-        <form action="{% url 'manager:login_check' %}" method="post">
-            {% csrf_token %}
-            <input type="text" name="usrEmail" id="usrEmail" placeholder="Username or Email"><br>
-            <input type="text" name="pwd" id="pwd" placeholder="Password"><br>
-            <a href="{% url 'manager:reset_password' %}">Forgot Account?</a><br><br>
-            <input type="submit" value="Login">
-        </form>
-    </div>
-
-    <div class="signup-panel">
-        <p>New to our platform? Clear your mind and hold onto just one password as we do the rest. Leave everything behind in our secure vault. Less passwords, less stress.</p>
-        <a href="{%  url 'manager:signup' %}">SignUp Here!</a>
-    </div>
-
+        <div class="signup-panel bg-danger">
+            <p>New to our platform? Clear your mind and hold onto just one password as we do the rest. Leave everything behind in our secure vault. Less passwords, less stress.</p>
+            <div class="d-flex justify-content-center">
+                <a href="{%  url 'manager:signup' %}" class="btn btn-primary">SignUp Here!</a>
+            </div>
+        </div><!--  END: signup-panel  -->
+    </div><!--  END: login-signup  -->
 {% endblock content %}
