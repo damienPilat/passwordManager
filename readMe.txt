@@ -4,6 +4,7 @@ Author: Damien Pilat
 Start Date: 25/06/2020
 
 Libraries:
-Django
+Django,
+Bootstrap
 
 ------------------------------------------------------
