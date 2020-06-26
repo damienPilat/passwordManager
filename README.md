@@ -10,7 +10,7 @@ to create a Password Manager.
 This Project will make use of the following technologies:
 * [Django](https://www.djangoproject.com/),
 * [Bootstrap](https://getbootstrap.com/),
-* [sqlite](https://www.sqlite.org/)
+* [sqlite](https://www.sqlite.org/).
 
 ## References
 This section will list all sources used as support for this project.  
