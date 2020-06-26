@@ -8,7 +8,18 @@ body {
   position: relative;
 }
 
-// SignUp Div
+.desktopSignup {
+  // Mobile View: Hide Signup Div
+  display: none;
+}
+@media (min-width: 715px) {
+  // Desktop View: Show SignUp Div
+  .desktopSignup {
+    display: block;
+  }
+}
+
+// SIGNUP Div
 .signup-panel {
   // Position
   position: absolute;
@@ -19,39 +30,55 @@ body {
   width: 80vw;    // Dynamic width
 
   // Text
-  text-align: justify; //
+  text-align: justify;
 
   // Misc
-  //padding: 10vh 5vw 5vh 250px * 1.5;
-  padding: 5vh 5vw 5vh calc(~"250px + 10vw") //Padding centers signup
+  padding: 5vh 5vw 5vh calc(~"250px + 10vw") // Position content
 }
-@media (min-width: )
-
-
+// SIGNUP Misc
 .signup-content {
-  width: 205px;     // Fix width of signup content
+  width: 205px;     // Content: fixed width
 }
-#signupBtn {
-  margin-top: 20px;
+#desktopSignupBtn {
+  margin-top: 20px; // Btn Margin increased
+}
+#mobileSignupBtn {
+
+}
+.mobileSignup {
+  // Mobile View: Show SignupBtn
+  display: block;
+}
+@media (min-width: 715px) {
+  .mobileSignup {
+    // Desktop View: Hide SignupBtn
+    display: none;
+  }
 }
 
-// Login Div
+
+// LOGIN Div
 .login-panel {
+  // Mobile View: centered
   // Position
   position: relative;
   top: 20vh;
-  left: -15vh; // Content centered, dist. from center
 
   // Size
   height: 400px;
   width: 40vw;
   min-width: 260px; // Ensures elements on one line
 }
-
+@media (min-width: 715px) {
+  .login-panel {
+    // Desktop View: left misaligned
+    left: -15vh; // Content centered, dist. from center
+  }
+}
+//LOGIN Misc
 .form-group {
   margin-bottom: 0; // Remove spacing b/w form elements
 }
-
 #forgotAccount {
   font-size: 0.8rem; // Size of forgot account link
 }

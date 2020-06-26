@@ -7,16 +7,19 @@
 {% block content %}
     <!--  MAIN LOGIN DIV: customCSS, flexbox-row  -->
     <div class="login-signup d-flex justify-content-center">
-        <!--  SIGNUP DIV: customCSS, bootstrap color, flexbox-centred  -->
-        <div class="signup-panel bg-danger d-flex justify-content-center">
-            <div class="signup-content">
-                <p>New to our platform? Clear your mind and hold onto just one password as we do the rest.
-                    Leave everything behind in our secure vault. <br />Less passwords, less stress.</p>
-                <div class="d-flex justify-content-center">
-                    <a href="{%  url 'manager:signup' %}" class="btn btn-primary" id="signupBtn">SignUp</a>
+        <!--  Hide Signup on mobile  -->
+        <div class="desktopSignup">
+            <!--  SIGNUP DIV: customCSS, bootstrap color, flexbox-centred  -->
+            <div class="signup-panel bg-danger d-flex justify-content-center">
+                <div class="signup-content">
+                    <p>New to our platform? Clear your mind and hold onto just one password as we do the rest.
+                        Leave everything behind in our secure vault. <br />Less passwords, less stress.</p>
+                    <div class="d-flex justify-content-center">
+                        <a href="{%  url 'manager:signup' %}" class="btn btn-primary" id="desktopSignupBtn">SignUp</a>
+                    </div>
                 </div>
-            </div>
-        </div><!--  END: signup-panel  -->
+            </div><!--  END: signup-panel  -->
+        </div><!--  END: hideMobile  -->
 
         <!--  LOGIN DIV: customCSS, flexbox-centered  -->
         <div class="login-panel d-flex justify-content-center">
@@ -26,21 +29,27 @@
                     <h5>PassManager</h5>
                     <form action="{% url 'manager:login_check' %}" method="post">
                         {% csrf_token %}
-                        {#  Username/Email Field  #}
+                        <!--  Username/Email Input  -->
                         <div class="form-group usernameInput">
                             <label for="usrEmail">Enter Username or Email</label>
                             <input type="text" class="form-control" name="usrEmail" id="usrEmail" placeholder="Username or Email"><br>
                         </div>
-                        {#  Password Field  #}
+
+                        <!--  Password Input & Forgot Account Link  -->
                         <div class="form-group">
                             <label for="pwd">Enter Password</label>
                             <input type="text" class="form-control" name="pwd" id="pwd" placeholder="Password">
                             <a href="{% url 'manager:reset_password' %}" id="forgotAccount">Forgot Account?</a><br><br>
                         </div>
-                        <button type="submit" class="btn btn-primary">Login</button>
+
+                        <!--  Login&SignUp Btn  -->
+                        <div class="d-flex justify-content-center">
+                            <div class="p-2 mobileSignup"><a href="{%  url 'manager:signup' %}" class="btn btn-light" id="mobileSignupBtn">SignUp</a></div>
+                            <div class="p-2 loginBtn"><button type="submit" class="btn btn-primary">Login</button></div>
+                        </div>
                     </form>
-                </div>
-            </div>
+                </div><!--  END: card-body  -->
+            </div><!--  END: card  -->
         </div><!--  END: login-panel  -->
     </div><!--  END: login-signup  -->
 {% endblock content %}
