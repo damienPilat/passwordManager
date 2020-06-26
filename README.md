@@ -14,6 +14,6 @@ This Project will make use of the following technologies:
 
 ## References
 This section will list all sources used as support for this project.  
-The initial structure was done by following the [Django Tutorial](https://docs.djangoproject.com/en/3.0/intro/tutorial01/).
-
+The initial structure was done by following the [Django Tutorial](https://docs.djangoproject.com/en/3.0/intro/tutorial01/).  
+The initial side nav was created following this [w2schools tutorial](https://www.w3schools.com/howto/howto_js_sidenav.asp).
 
