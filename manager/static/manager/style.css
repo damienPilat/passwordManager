@@ -1,5 +1,58 @@
 body {
   height: 100vh;
+  background-color: rgba(248, 248, 248, 0.8);
+}
+#main {
+  transition: margin-right 0.5s;
+  padding: 20px;
+  height: 100%;
+}
+.sideNav {
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  padding-top: 60px;
+  transition: 0.5s;
+}
+.sideNav {
+  padding-top: 35px;
+}
+.sideNav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+.sideNav a:hover {
+  color: #f1f1f1;
+}
+.sideNav .closeBtn {
+  transition: margin-right 0.5s;
+  padding: 20px;
+}
+@media (max-height: 450px) {
+  .sideNav {
+    padding-top: 15px;
+  }
+  .sideNav a {
+    font-size: 15px;
+  }
+}
+span#closeSideNav {
+  margin-left: 15px;
+  margin-top: 20px;
+  background-color: transparent;
+  color: red;
+}
+#sideNavContents {
+  padding-top: 20px;
 }
 .login-signup {
   position: relative;
@@ -40,7 +93,7 @@ body {
   top: 20vh;
   height: 400px;
   width: 40vw;
-  min-width: 260px;
+  min-width: 280px;
 }
 @media (min-width: 715px) {
   .login-panel {

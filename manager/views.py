@@ -30,6 +30,10 @@ def main(request):
     return render(request, 'manager/main.html', context)
 
 
+def profile(request):
+    return render(request, 'manager/profile.html')
+
+
 def settings(request):
     return render(request, 'manager/settings.html')
 

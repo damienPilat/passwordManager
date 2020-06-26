@@ -15,14 +15,76 @@
 <body>
     <header>
         {% block header %}
-            <nav class="navbar navbar-light bg-light">
-                <a class="navbar-brand" href="#">PassManager</a>
+            <!--  Bootsrap Navbar  -->
+            <nav class="navbar">
+                <!--  Logo w/ Link  -->
+                <a href="{% url 'manager:main' %}" class="navbar-brand">PassManager</a>
+                <!--  SideNav Open Btn  -->
+                <button class="btn btn-light">
+                    <span id="openSideNav">
+                        <svg class="bi bi-gear-wide-connected" width="1.5em" height="1.5em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d="M8.932.727c-.243-.97-1.62-.97-1.864 0l-.071.286a.96.96 0 0 1-1.622.434l-.205-.211c-.695-.719-1.888-.03-1.613.931l.08.284a.96.96 0 0 1-1.186 1.187l-.284-.081c-.96-.275-1.65.918-.931 1.613l.211.205a.96.96 0 0 1-.434 1.622l-.286.071c-.97.243-.97 1.62 0 1.864l.286.071a.96.96 0 0 1 .434 1.622l-.211.205c-.719.695-.03 1.888.931 1.613l.284-.08a.96.96 0 0 1 1.187 1.187l-.081.283c-.275.96.918 1.65 1.613.931l.205-.211a.96.96 0 0 1 1.622.434l.071.286c.243.97 1.62.97 1.864 0l.071-.286a.96.96 0 0 1 1.622-.434l.205.211c.695.719 1.888.03 1.613-.931l-.08-.284a.96.96 0 0 1 1.187-1.187l.283.081c.96.275 1.65-.918.931-1.613l-.211-.205a.96.96 0 0 1 .434-1.622l.286-.071c.97-.243.97-1.62 0-1.864l-.286-.071a.96.96 0 0 1-.434-1.622l.211-.205c.719-.695.03-1.888-.931-1.613l-.284.08a.96.96 0 0 1-1.187-1.186l.081-.284c.275-.96-.918-1.65-1.613-.931l-.205.211a.96.96 0 0 1-1.622-.434L8.932.727zM8 12.997a4.998 4.998 0 1 0 0-9.995 4.998 4.998 0 0 0 0 9.996z"/>
+                            <path fill-rule="evenodd" d="M7.375 8L4.602 4.302l.8-.6L8.25 7.5h4.748v1H8.25L5.4 12.298l-.8-.6L7.376 8z"/>
+                        </svg>
+                    </span>
+                </button>
             </nav>
-        {% endblock header %}
 
+            <div id="sideNavBar" class="sideNav">
+                <!--  Close Navbar  -->
+                <span id="closeSideNav">
+                    <svg class="bi bi-x-circle" width="1.5em" height="1.5em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                        <path fill-rule="evenodd" d="M11.854 4.146a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708-.708l7-7a.5.5 0 0 1 .708 0z"/>
+                        <path fill-rule="evenodd" d="M4.146 4.146a.5.5 0 0 0 0 .708l7 7a.5.5 0 0 0 .708-.708l-7-7a.5.5 0 0 0-.708 0z"/>
+                    </svg>
+                </span>
+
+                <!--  Side Navbar Contents  -->
+                <div id="sideNavContents">
+                    <a href="{% url 'manager:main' %}">Home</a>
+                    <a href="{% url 'manager:profile' %}">Profile</a>
+                    <a href="{% url 'manager:settings' %}">Settings</a>
+                    <a href="{% url 'manager:about' %}">About</a>
+                    <a href="#">Log Out</a>
+                </div>
+            </div>
+        {% endblock header %}
     </header>
 
+    <div id="main">
     {% block content %}
     {% endblock content %}
+    </div>
+
+    <!--  Javascript  -->
+    <!--  SideNav: Open & Close  -->
+    <script>
+        // Event Listener on Open btn
+        document.querySelector('span#openSideNav').addEventListener('click', function(){
+            openNav();
+        });
+        // Event Listener on Close btn
+        document.querySelector('span#closeSideNav').addEventListener('click', function(){
+            closeNav();
+        });
+        // Event Listener on main div
+        document.querySelector('#main').addEventListener('click', function(){
+            closeNav();
+        });
+
+        // Open Side Na: show, move main div, change bg color
+        function openNav() {
+            document.getElementById("sideNavBar").style.width = "250px";
+            document.getElementById("main").style.marginRight = "250px";
+            document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+        }
+        // Close Side Nav: hide, put back div, replace bg color
+        function closeNav() {
+            document.getElementById("sideNavBar").style.width = "0";
+            document.getElementById("main").style.marginRight = "0";
+            document.body.style.backgroundColor = "rgba(248, 248, 248, 0.8)";
+        }
+    </script>
 </body>
 </html>
