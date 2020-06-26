@@ -15,10 +15,11 @@ body {
 .signup-panel {
   position: absolute;
   top: 23vh;
+  left: 10vw;
   height: 300px;
   width: 80vw;
   text-align: justify;
-  padding: 5vh 5vw 5vh calc(250px + 10vw);
+  padding: 5vh 4vw 5vh calc(265px + 10vw);
 }
 .signup-content {
   width: 205px;
@@ -43,7 +44,7 @@ body {
 }
 @media (min-width: 715px) {
   .login-panel {
-    left: -15vh;
+    left: -15vw;
   }
 }
 .form-group {
