@@ -103,20 +103,29 @@ span#closeSideNav {
 .form-group {
   margin-bottom: 0;
 }
-#forgotAccount {
+#forgot-account {
   font-size: 0.8rem;
 }
 #mainPage-mainDiv {
   height: 90px;
 }
-#softwareDetails {
+#software-name {
+  min-width: 40vw;
+}
+#software-details {
   padding-left: 15px;
+}
+.pwd-input {
+  width: 100px;
+  background-color: transparent;
+  border: 0;
+}
+#togglePwd {
+  background-color: transparent;
+  border: 0;
 }
 #clipboard {
   padding-left: 15px;
-}
-#pwd-read {
-  width: 100px;
   background-color: transparent;
   border: 0;
 }

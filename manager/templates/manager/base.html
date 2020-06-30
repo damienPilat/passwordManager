@@ -12,8 +12,10 @@
         {% endblock head_css_section %}
     {% endblock head_css %}
 
-    <!--  Header Script  -->
-    <script src="{% static 'manager/header.js' %}"></script>
+
+    <!--  Clipbroad library w/ Flash  -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js"></script>
+
     <!--  Add additional JS files  -->
     {% block scriptFiles %}
     {% endblock scriptFiles %}
@@ -64,6 +66,26 @@
     {% block content %}
     {% endblock content %}
     </div>
+
+    <!--  Header Script  -->
+    <script src="{% static 'manager/header.js' %}"></script>
+
+    {#  Clipboard Instantiate  #}
+    <script>
+        let clipboard = new ClipboardJS('.clipBtn', {
+            text: function(trigger) {
+                return trigger.getAttribute('value');
+            }
+        });
+
+        clipboard.on('success', function(e) {
+            console.log(e);
+        });
+
+        clipboard.on('error', function(e) {
+            console.log(e);
+        });
+    </script>
 
     {% block headerJS %}
         <!--  Javascript  -->
