@@ -19,25 +19,29 @@
 
 
             {#  COLUMN Two  #}<!--  Software Name, password, Clipboard  -->
-            <div class="d-flex flex-column" id="softwareDetails">
+            <div class="d-flex flex-column" id="software-details">
                 {#  ROW One  #}{#  Software Name  #}
-                <div class="d-flex flex-row"><h4>{{ password.software_name }}</h4></div>
+                <div class="d-flex flex-row" id="software-name"><h4>{{ password.software_name }}</h4></div>
 
                 {#  ROW Two  #}<!--  Pwd placeholder, toggle visible & copy to clipboard  -->
                 <div class="d-flex flex-row">
                     <!--  Pwd placeholder & show pwd  -->
                     <div class="input-group input-group-sm">
                         {# ReadOnly pwd input #}
-                        <input type="text" id="pwd-read" value="*********" readonly>
-                        {# Appended 'toggle pwd' icon #}
+                        <input type="password" class="pwd-input" id="{{ password.input_id }}" value="{{ password.password }}" readonly>
+
                         <div class="input-group-append">
-                            <a href="#"><img src="{% static '/icons/eye.svg' %}" alt="Toggle Password Visible"></a>
+                            {# Appended 'toggle pwd' icon #}
+                            <button id="togglePwd">
+                                <img src="{% static '/icons/eye.svg' %}" alt="Toggle Password Visible">
+                            </button>
+
+                            {# Copy pwd to Clipboard  #}
+                            <button id="clipboard" class="clipBtn" data-clipboard-target="#{{ password.input_id }}">
+                                <img src="{% static '/icons/clipboard.svg' %}" alt="Copy password to clipboard Icon">
+                            </button>
                         </div>
                     </div><!--  END: Pwd placeholder & show pwd  -->
-                    <!--  Copy pwd to Clipboard  -->
-                    <div id="clipboard">
-                        <a href="#"><img src="{% static '/icons/clipboard.svg' %}" alt="Copy password to clipboard Icon"></a>
-                    </div>
                 </div>{#  END: Row Two  #}
             </div>{# END: COLUMN Two #}
 
@@ -70,14 +74,21 @@
 
     <!--  Get pwd and copy to clipboard  -->
     <script>
-        // Event Listener on clipboard span
-        document.querySelector('span#clipboard').addEventListener('click', function(){
-            copyToClipboard();
+        // Toggle show/hide password
+        document.querySelector('button#togglePwd').addEventListener('click', function(){
+           toggleEntry()
         });
 
-        function copyToClipboard(){
-            let current_pwd;
+        // Toggle pwd element type & value
+        function toggleEntry(){
+            let x = document.getElementsByClassName('pwd-input');
+            if (x.type === "password") {
+                x.type = "text";
+            } else {
+                x.type = "password";
+            }
         }
+
     </script>
 {% endblock content %}
 
