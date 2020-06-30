@@ -129,4 +129,10 @@ span#closeSideNav {
   background-color: transparent;
   border: 0;
 }
+#website-link {
+  padding-left: 20px;
+}
+#edit-div {
+  padding-left: 10px;
+}
 /*# sourceMappingURL=style.css.map */

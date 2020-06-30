@@ -14,8 +14,7 @@
 
             {#  COLUMN One  #}<!--  Software Icon Placeholder  -->
             <div class="d-flex flex-column">
-{#                <a href="#"><img src="{% static '/icons/shield-lock.svg' %}" alt="Default Software Logo" style="width:3em; height:3em;"></a>#}
-                <a href="#"><img src="{{ password.website_link }}/favicon.ico" alt="Software Logo (or default)" style="width:3em; height:3em;"></a>
+                <a href="#"><img src="{{ password.website_link }}/favicon.ico" alt="Software Logo" style="width:3em; height:3em;"></a>
             </div>{# END: Software Icon Placeholder #}
 
 
@@ -51,20 +50,24 @@
             <div class="d-flex flex-column">
                 <div class="d-flex flex-row">
                     {#  Link to Software Icon #}
-                    <div style="padding-left: 20px">
+                    <div id="website-link">
                         <a href="{{ password.website_link }}" target="_blank">
                             <img src="{% static '/icons/link-45deg.svg' %}" alt="Link to Software Website" style="width:1.5em; height: 1.5em">
                         </a>
                     </div>
 
                     {#  Edit Data Icon #}
-                    <div style="padding-left: 10px">
+                    <div id="edit-div">
                         <a href="#"><img src="{% static '/icons/pencil.svg' %}" alt="Edit Software data"></a>
                     </div>
                 </div>
 
             </div>{# END: COLUMN Three #}
 
+{# TEST - Custom svg if no favicon #}
+            <svg height="50" width="50">
+                <text x="0" y="15" fill="grey">{{ password.software_name|slice:"1" }}</text>
+            </svg>
         </div><!--  END: Main Div  -->
         {% endfor %}
 
