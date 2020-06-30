@@ -1,7 +1,13 @@
 from django.db import models
+import random
+
+
+def new_input_id():
+    return "inputID_" + str(random.randint(0,1000))
 
 
 class Password(models.Model):
+    input_id = models.CharField(max_length=1000, default=new_input_id(), editable=True)
     software_name = models.CharField(max_length=200)
     username = models.CharField(max_length=200)
     password = models.CharField(max_length=100)
