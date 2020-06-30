@@ -32,7 +32,7 @@
 
                         <div class="input-group-append">
                             {# Appended 'toggle pwd' icon #}
-                            <button id="togglePwd">
+                            <button class="toggleBtn" id="togglePwd" value="{{ password.input_id }}">
                                 <img src="{% static '/icons/eye.svg' %}" alt="Toggle Password Visible">
                             </button>
 
@@ -74,19 +74,25 @@
 
     <!--  Get pwd and copy to clipboard  -->
     <script>
-        // Toggle show/hide password
-        document.querySelector('button#togglePwd').addEventListener('click', function(){
-           toggleEntry()
-        });
+        // Toggle show/hide password (using class attr)
+        // Get all Buttons w/ given class
+        let btnElements = document.getElementsByClassName("toggleBtn");
 
-        // Toggle pwd element type & value
-        function toggleEntry(){
-            let x = document.getElementsByClassName('pwd-input');
-            if (x.type === "password") {
-                x.type = "text";
+        // Function to toggle pwd input
+        let toggleFunction = function() {
+            // Get element from val of btn
+            let input_el = document.getElementById(this.getAttribute("value"));
+            // Toggle from pwd-text or back
+            if (input_el.type === "password") {
+                input_el.type = "text";
             } else {
-                x.type = "password";
+                input_el.type = "password";
             }
+        };
+
+        // Loop through all btns w/ class and add event listener w/ function
+        for (let i=0; i<btnElements.length; i++) {
+            btnElements[i].addEventListener('click', toggleFunction, false);
         }
 
     </script>
