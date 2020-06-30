@@ -106,12 +106,18 @@ span#closeSideNav {
 #forgotAccount {
   font-size: 0.8rem;
 }
-input#pwd-read {
-  padding-top: 5px;
+#mainPage-mainDiv {
+  height: 90px;
+}
+#softwareDetails {
+  padding-left: 15px;
+}
+#clipboard {
+  padding-left: 15px;
+}
+#pwd-read {
+  width: 100px;
   background-color: transparent;
-  text-align: left;
   border: 0;
-  min-width: 100px;
-  width: 100%;
 }
 /*# sourceMappingURL=style.css.map */
