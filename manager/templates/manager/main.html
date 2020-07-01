@@ -14,7 +14,7 @@
 
             {#  COLUMN One  #}<!--  Software Icon Placeholder  -->
             <div class="d-flex flex-column">
-                <a href="#"><img src="{{ password.website_link }}/favicon.ico" alt="Software Logo" style="width:3em; height:3em;"></a>
+                <a href="#"><img id="software-image" src="{{ password.website_link }}/favicon.io" alt="Software Logo"></a>
             </div>{# END: Software Icon Placeholder #}
 
 
@@ -64,10 +64,6 @@
 
             </div>{# END: COLUMN Three #}
 
-{# TEST - Custom svg if no favicon #}
-            <svg height="50" width="50">
-                <text x="0" y="15" fill="grey">{{ password.software_name|slice:"1" }}</text>
-            </svg>
         </div><!--  END: Main Div  -->
         {% endfor %}
 
@@ -76,7 +72,20 @@
     {% endif %}
 
 
-    <!--  Get pwd and copy to clipboard  -->
+    <!--  Set default img if broken  -->
+    <script>
+        // Runs if img element sets error
+        $("img#software-image").on("error", function () {
+// DEBUG - svg working, model call not working
+            // Replace w/ custom svg
+            $(this).replaceWith(
+                '<svg height="50" width="50">\n' +
+                '    <text x="0" y="15" fill="grey">{{ password.software_name|slice:"1" }}</text>\n' +
+                '</svg>');
+        });
+    </script>
+
+    <!--  Toggle pwd display on btn click  -->
     <script>
         // Toggle show/hide password (using class attr)
         // Get all Buttons w/ given class
@@ -98,7 +107,6 @@
         for (let i=0; i<btnElements.length; i++) {
             btnElements[i].addEventListener('click', toggleFunction, false);
         }
-
     </script>
 {% endblock content %}
 
