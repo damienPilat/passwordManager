@@ -1,0 +1,120 @@
+{% extends 'manager/base.html' %}               {# Extend from base template #}
+{% block title %}Homepage{% endblock title %}   {# Update Page Title #}
+{% load static %}                               {#  Access static files #}
+
+{#  Main Page Content  #}
+{% block content %}
+    {#  Check if Passwords stored  #}
+    {% if all_passwords %}
+        {#  Loop through all Passwords in DB  #}
+        {% for password in all_passwords %}
+
+        <!--  Main Div  -->
+        <div class="d-flex" id="mainPage-mainDiv">
+
+            {#  COLUMN One  #}<!--  Software Icon Placeholder  -->
+            <div class="d-flex flex-column">
+                <a href="#"><img id="software-image" src="{{ password.website_link }}/favicon.ico" alt="Software Logo"></a>
+            </div>{# END: Software Icon Placeholder #}
+
+
+            {#  COLUMN Two  #}<!--  Software Name, password, Clipboard  -->
+            <div class="d-flex flex-column" id="software-details">
+                {#  ROW One  #}{#  Software Name  #}
+                <div class="d-flex flex-row" id="software-name"><h4>{{ password.software_name }}</h4></div>
+
+                {#  ROW Two  #}<!--  Pwd placeholder, toggle visible & copy to clipboard  -->
+                <div class="d-flex flex-row">
+                    <!--  Pwd placeholder & show pwd  -->
+                    <div class="input-group input-group-sm">
+                        {# ReadOnly pwd input #}
+                        <input type="password" class="pwd-input" id="{{ password.input_id }}" value="{{ password.password }}" readonly>
+
+                        <div class="input-group-append">
+                            {# Appended 'toggle pwd' icon #}
+                            <button class="toggleBtn" id="togglePwd" value="{{ password.input_id }}">
+                                <img src="{% static '/icons/eye.svg' %}" alt="Toggle Password Visible">
+                            </button>
+
+                            {# Copy pwd to Clipboard  #}
+                            <button id="clipboard" class="clipBtn" data-clipboard-target="#{{ password.input_id }}">
+                                <img src="{% static '/icons/clipboard.svg' %}" alt="Copy password to clipboard Icon">
+                            </button>
+                        </div>
+                    </div><!--  END: Pwd placeholder & show pwd  -->
+                </div>{#  END: Row Two  #}
+            </div>{# END: COLUMN Two #}
+
+
+            {# COLUMN Three #}<!-- Link to website, edit data  -->
+            <div class="d-flex flex-column">
+                <div class="d-flex flex-row">
+                    {#  Link to Software Icon #}
+                    <div id="website-link">
+                        <a href="{{ password.website_link }}" target="_blank">
+                            <img src="{% static '/icons/link-45deg.svg' %}" alt="Link to Software Website" style="width:1.5em; height: 1.5em">
+                        </a>
+                    </div>
+
+                    {#  Edit Data Icon #}
+                    <div id="edit-div">
+                        <a href="#software-edit" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="software-edit">
+                            <img src="{% static '/icons/pencil.svg' %}" alt="Edit Software data">
+                        </a>
+                        <div class="collapse" id="software-edit">
+                            <div class="card card-body">
+                                This is hidden and only show on correct btn click
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>{# END: COLUMN Three #}
+
+        </div><!--  END: Main Div  -->
+        {% endfor %}
+
+{#  If no passwords stored yet  #}
+    {% else %}
+        <p>No passwords currently stored</p>
+    {% endif %}
+
+
+    <!--  Set default img if broken  -->
+    <script>
+        // Runs if img element sets error
+        $("img#software-image").on("error", function () {
+// DEBUG - svg working, model call not working
+            // Replace w/ custom svg
+            $(this).replaceWith(
+                '<svg height="50" width="50">\n' +
+                '    <text x="0" y="15" fill="grey">{{ password.software_name|slice:"1" }}</text>\n' +
+                '</svg>');
+        });
+    </script>
+
+    <!--  Toggle pwd display on btn click  -->
+    <script>
+        // Toggle show/hide password (using class attr)
+        // Get all Buttons w/ given class
+        let btnElements = document.getElementsByClassName("toggleBtn");
+
+        // Function to toggle pwd input
+        let toggleFunction = function() {
+            // Get element from val of btn
+            let input_el = document.getElementById(this.getAttribute("value"));
+            // Toggle from pwd-text or back
+            if (input_el.type === "password") {
+                input_el.type = "text";
+            } else {
+                input_el.type = "password";
+            }
+        };
+
+        // Loop through all btns w/ class and add event listener w/ function
+        for (let i=0; i<btnElements.length; i++) {
+            btnElements[i].addEventListener('click', toggleFunction, false);
+        }
+    </script>
+{% endblock content %}
+
+
