@@ -109,6 +109,10 @@ span#closeSideNav {
 #mainPage-mainDiv {
   height: 90px;
 }
+#software-image {
+  width: 3em;
+  height: 3em;
+}
 #software-name {
   min-width: 40vw;
 }
