@@ -10,10 +10,20 @@ a multi-device compatible product.
 ## Technologies Uesd
 This Project will make use of the following technologies:
 
-* [Django](https://www.djangoproject.com/),
-* [Bootstrap](https://getbootstrap.com/),
-* [sqlite](https://www.sqlite.org/),
-* [clipboard.js](https://clipboardjs.com/).
+<p>
+    <a href="https://www.djangoproject.com/">
+        <img src="https://www.djangoproject.com/m/img/logos/django-logo-positive.png" alt="Django Logo" height="50px" />
+    </a>
+    <a href="https://getbootstrap.com/">
+        <img src="https://fuzati.com/wp-content/uploads/2016/12/Bootstrap-Logo.png" alt="Bootstrap Logo" height="50px" />
+    </a>
+    <a href="https://www.sqlite.org/">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/SQLite370.svg/1280px-SQLite370.svg.png" alt="Sqlite Logo" height="50px"/>
+    </a>
+    <a href="https://clipboardjs.com/">
+        <img src="https://seeklogo.com/images/C/clipboard-js-logo-3A3F181126-seeklogo.com.png" alt="ClipboardJs Logo" height="50px"/>
+    </a>
+</p>
 
 ## References  
 The initial structure was done by following the [Django Tutorial](https://docs.djangoproject.com/en/3.0/intro/tutorial01/).  
