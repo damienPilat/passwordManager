@@ -9,6 +9,7 @@ a multi-device compatible product.
 
 ## Technologies Uesd
 This Project will make use of the following technologies:
+
 * [Django](https://www.djangoproject.com/),
 * [Bootstrap](https://getbootstrap.com/),
 * [sqlite](https://www.sqlite.org/),
